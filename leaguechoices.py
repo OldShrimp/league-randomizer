@@ -58,7 +58,7 @@ class LeagueChoices:
         tier_width = 240
         x_offset = 480
         melee_y_offset = 40
-        range_y_offset = 305
+        range_y_offset = 304
         mage_y_offset = 588
         passive_y_offset = 872
         highest_tier = max(self.combat_masteries[0], max(self.combat_masteries[1], self.combat_masteries[2]))
@@ -91,5 +91,5 @@ if __name__ == '__main__':
     print(f'  Regions: {', '.join(a.regions)}\n'
          +f'  Combat Masteries: Melee {a.combat_masteries[0]}, Ranged {a.combat_masteries[1]}, Mage {a.combat_masteries[2]}\n'
          +f'  Relics: {', '.join(a.relics)}')
-    a.combat_masteries = [5,5,0]
+    #a.combat_masteries = [5,5,0]
     a.create_combat_graphic().save('combat-graphic-generated.png')
