@@ -1,7 +1,4 @@
 import random
-import numpy
-import imageio
-import os
 from PIL import Image
 
 REGIONS = ['Morytania', 'Varlamore', 'Fremmenik', 'Kandarin',
