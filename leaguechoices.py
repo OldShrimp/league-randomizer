@@ -5,10 +5,13 @@ REGIONS = ['Morytania', 'Varlamore', 'Fremmenik', 'Kandarin',
            'Desert', 'Wilderness', 'Tirannwn', 'Kourend', 'Asgarnia']
 RELICS = [
           ['Power Miner', 'Lumberjack', 'Animal Wrangler'],
+          ['Dodgy Deals', 'Corner Cutter', 'Friendly Forager'],
           ['Fairy\'s Flight', 'Bank Heist', 'Clue Compass'],
+          ['Golden God', 'Reloaded', 'Equilibrium'],
+          ['Treasure Arbiter', 'Production Master', 'Slayer Master'],
           ['Total Recall', 'Banker\'s Note'],
-          ['Grimoire', 'Overgrown'],
-          ['Golden God']
+          ['Grimoire', 'Overgrown', 'Pocket Kindom'],
+          ['Last Stand', 'Guardian', 'Specialist']
          ]
 
 class LeagueChoices:
@@ -29,10 +32,14 @@ class LeagueChoices:
         self.regions = self.regions[:3]
         
     def randomize_relics(self) -> None:
-        self.relics = RELICS
+        self.relics = RELICS.copy()
         for i in range(len(self.relics)):
             random.shuffle(self.relics[i])
             self.relics[i] = self.relics[i][0]
+        if self.relics[3] == 'Reloaded':
+            reloaded_choices = [relic for relic in RELICS[0] + RELICS[1] + RELICS[2] if relic not in self.relics[:3]]
+            random.shuffle(reloaded_choices)
+            self.relics[3] += ': ' + reloaded_choices[0]
             
     def randomize_Combats(self) -> None:
         self.combat_masteries = [0,0,0]
@@ -92,4 +99,5 @@ if __name__ == '__main__':
          +f'  Combat Masteries: Melee {a.combat_masteries[0]}, Ranged {a.combat_masteries[1]}, Mage {a.combat_masteries[2]}\n'
          +f'  Relics: {', '.join(a.relics)}')
     #a.combat_masteries = [5,5,0]
-    a.create_combat_graphic().save('combat-graphic-generated.png')
+    #a.create_combat_graphic().save('combat-graphic-generated.png')
+    #a.create_combat_graphic().show()
